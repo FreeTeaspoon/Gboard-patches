@@ -25,6 +25,12 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android build dependencies
+        run: sdkmanager "platforms;android-36" "build-tools;36.0.0"
+
       - name: Cache Gradle
         uses: burrunan/gradle-cache-action@v3
 
@@ -35,7 +41,7 @@ jobs:
         env:
           GITHUB_ACTOR: ${{ github.repository_owner }}
           GITHUB_TOKEN: ${{ secrets.MORPHE_PACKAGES_TOKEN }}
-        run: ./gradlew :patches:buildAndroid generatePatchesList
+        run: bash tools/build-public.sh :patches:buildAndroid generatePatchesList :extensions:extension:testDebugUnitTest
 
       - name: Validate synced release metadata
         id: metadata
@@ -91,6 +97,6 @@ jobs:
         with:
           tag_name: ${{ github.ref_name }}
           body_path: release-notes.md
-          prerelease: ${{ contains(github.ref_name, '-dev.') }}
+          prerelease: ${{ contains(github.ref_name, '-') }}
           files: |
             patches/build/libs/patches-${{ steps.metadata.outputs.version }}.mpp

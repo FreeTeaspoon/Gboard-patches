@@ -5,15 +5,35 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/jasonwu1994/Gboard-patches/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/jasonwu1994/Gboard-patches?display_name=tag&label=Release&style=for-the-badge"></a>
-  <a href="https://github.com/jasonwu1994/Gboard-patches"><img alt="Total downloads" src="https://img.shields.io/github/downloads/jasonwu1994/Gboard-patches/total?label=Downloads&style=for-the-badge"></a>
-  <a href="https://morphe.software/add-source?github=jasonwu1994/Gboard-patches"><img alt="Add to Morphe" src="https://img.shields.io/badge/Morphe-Add%20Source-00A8FF?style=for-the-badge"></a>
-  <a href="https://github.com/jasonwu1994/Gboard-patches"><img alt="GitHub stars" src="https://img.shields.io/github/stars/jasonwu1994/Gboard-patches?style=social"></a>
+  <a href="https://github.com/FreeTeaspoon/Gboard-patches/releases"><img alt="Latest release" src="https://img.shields.io/github/v/release/FreeTeaspoon/Gboard-patches?display_name=tag&label=Release&style=for-the-badge"></a>
+  <a href="https://github.com/FreeTeaspoon/Gboard-patches"><img alt="Total downloads" src="https://img.shields.io/github/downloads/FreeTeaspoon/Gboard-patches/total?label=Downloads&style=for-the-badge"></a>
+  <a href="https://morphe.software/add-source?github=FreeTeaspoon/Gboard-patches"><img alt="Add to Morphe" src="https://img.shields.io/badge/Morphe-Add%20Source-00A8FF?style=for-the-badge"></a>
+  <a href="https://github.com/FreeTeaspoon/Gboard-patches"><img alt="GitHub stars" src="https://img.shields.io/github/stars/FreeTeaspoon/Gboard-patches?style=social"></a>
 </p>
 
 <p align="center">
   <a href="https://ko-fi.com/jasonwu1994"><img height="40" alt="Buy me a coffee on Ko-fi" src="https://storage.ko-fi.com/cdn/kofi5.png?v=3"></a>
 </p>
+
+## Duck email fork
+
+This fork adds a **Duck email** button to Gboard’s draggable toolbar menu. Tap it to generate a new private `@duck.com` address and insert it into the focused text field.
+
+1. Patch Gboard `18.0.3.954559732-release-arm64-v8a` with this source. Include **DuckDuckGo Email Protection**.
+2. Open **Gboard settings > Patches > Keyboard Tools & Shortcuts > DuckDuckGo Email Protection**.
+3. Choose **Enter Duck address and send code** and enter your existing `name@duck.com` address. Check its forwarding inbox.
+4. Enter the emailed code or four-word passphrase. You can reopen **Enter emailed code** after checking your inbox.
+5. Open a text field and Gboard’s toolbar menu. Hold and drag **Duck email** to pin it to the top toolbar, or tap it in the menu.
+
+The account token is encrypted with Android Keystore and kept outside patch settings exports. Sign out removes the saved account and last address. Each tap requests a new address directly from DuckDuckGo. Requests run in the background and repeated taps are ignored while one is loading. If the field changes or the keyboard closes, the result stays in **Copy last generated address** in the DDG patch settings. It is never copied to the clipboard automatically.
+
+An existing DuckDuckGo Email Protection account and an internet connection are required. Account creation remains at [duckduckgo.com/email](https://duckduckgo.com/email/). This uses DuckDuckGo’s unofficial API.
+
+<img alt="Duck email in Gboard’s draggable toolbar menu" src="docs/assets/features/duck-email/toolbar.png" width="360">
+
+<img alt="Duck email patch settings" src="docs/assets/features/duck-email/settings.png" width="360">
+
+Based on [jasonwu1994/Gboard-patches](https://github.com/jasonwu1994/Gboard-patches). All upstream patches remain available. The original project’s documentation follows below.
 
 ## Overview
 
@@ -298,12 +318,20 @@ Features tailored to Traditional Chinese and Zhuyin input workflows.
 
 Add this repository as a Morphe source:
 
-- [Open in Morphe](https://morphe.software/add-source?github=jasonwu1994/Gboard-patches)
-- Or manually add `https://github.com/jasonwu1994/Gboard-patches`
+- [Open in Morphe](https://morphe.software/add-source?github=FreeTeaspoon/Gboard-patches)
+- Or manually add `https://github.com/FreeTeaspoon/Gboard-patches`
 
 ## Build
 
-Before running Gradle locally, authenticate to Morphe's GitHub Packages registry with either:
+To build without a GitHub Packages credential, use the public Morphe source builds:
+
+```bash
+bash tools/build-public.sh :patches:buildAndroid generatePatchesList
+```
+
+This builds pinned Morphe Gradle plugin and patcher revisions into an isolated local Maven repository under `.validation/public-build`. It needs Git, Python 3, Java 21 and an Android SDK with platform 36 and build tools. Run tests with `bash tools/build-public.sh :patches:test :extensions:extension:testDebugUnitTest`.
+
+Alternatively, to use the published Morphe packages, authenticate to Morphe's GitHub Packages registry with either:
 
 - `gpr.user` and `gpr.key` in `~/.gradle/gradle.properties`
 - `GITHUB_ACTOR` and `GITHUB_TOKEN` as environment variables
