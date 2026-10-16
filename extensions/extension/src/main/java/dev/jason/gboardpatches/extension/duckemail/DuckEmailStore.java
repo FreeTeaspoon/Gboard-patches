@@ -35,6 +35,10 @@ final class DuckEmailStore {
 
     boolean enabled() { return preferences.getBoolean("enabled", true); }
     void enabled(boolean enabled) { preferences.edit().putBoolean("enabled", enabled).apply(); }
+    boolean copyGeneratedEmail() { return preferences.getBoolean("copy_generated_email", false); }
+    void copyGeneratedEmail(boolean enabled) {
+        preferences.edit().putBoolean("copy_generated_email", enabled).apply();
+    }
     String username() { return preferences.getString("username", ""); }
     String pending() { return preferences.getString("pending", ""); }
     String lastAddress() { return preferences.getString("last_address", ""); }

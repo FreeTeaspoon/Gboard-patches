@@ -38,14 +38,14 @@ public class DuckEmailSettingsFeatureTest {
                 GboardPatchesFeatureAvailability.FEATURE_DUCK_EMAIL, true);
         assertTrue(feature.isAvailable(activity));
         Screen screen = feature.buildScreen(host);
-        assertFalse(screen.getRows().get(2).isEnabled());
+        assertFalse(screen.getRows().get(3).isEnabled());
         ToggleRow toggle = (ToggleRow) screen.getRows().get(0);
         assertTrue(toggle.isChecked());
         toggle.getToggleAction().accept(false);
         assertFalse(DuckEmailRuntime.enabled(activity));
     }
     @Test public void addressDialogKeepsInvalidInputOpenWithoutSendingAndCancelClearsIt() {
-        ((ActionRow) feature.buildScreen(host).getRows().get(1)).getAction().run();
+        ((ActionRow) feature.buildScreen(host).getRows().get(2)).getAction().run();
         AlertDialog dialog = ShadowAlertDialog.getLatestAlertDialog();
         assertNotNull(dialog);
         assertEquals("Send code", dialog.getButton(AlertDialog.BUTTON_POSITIVE).getText().toString());
@@ -63,7 +63,7 @@ public class DuckEmailSettingsFeatureTest {
     @Test public void pendingLoginCanBeResumedWithExplicitSignInAndCodeIsNotRetained() {
         DuckEmailStore store = new DuckEmailStore(activity);
         assertTrue(store.pending("example", store.revision()));
-        ActionRow code = (ActionRow) feature.buildScreen(host).getRows().get(2);
+        ActionRow code = (ActionRow) feature.buildScreen(host).getRows().get(3);
         assertTrue(code.isEnabled());
         code.getAction().run();
         AlertDialog dialog = ShadowAlertDialog.getLatestAlertDialog();
@@ -75,6 +75,18 @@ public class DuckEmailSettingsFeatureTest {
         assertEquals("", input.getText().toString());
         assertFalse(activity.getSharedPreferences(DuckEmailStore.FILE, 0).getAll()
                 .containsValue("one two three four"));
+    }
+    @Test public void copyToggleDefaultsOffAndPersistsAcrossSettingsAndSignOut() {
+        ToggleRow toggle = (ToggleRow) feature.buildScreen(host).getRows().get(1);
+        assertEquals("Copy generated email to clipboard", toggle.getTitle().toString());
+        assertFalse(toggle.isChecked());
+        toggle.getToggleAction().accept(true);
+        new DuckEmailStore(activity).signOut();
+        DuckEmailSettingsFeature reopened = new DuckEmailSettingsFeature(activity);
+        ToggleRow restored = (ToggleRow) reopened.buildScreen(host).getRows().get(1);
+        assertTrue(restored.isChecked());
+        restored.getToggleAction().accept(false);
+        assertFalse(new DuckEmailStore(activity).copyGeneratedEmail());
     }
     private EditText input(View view) {
         if (view instanceof EditText field) return field;

@@ -1,5 +1,5 @@
 {
-  "version": "3.12.1-ddg.1",
+  "version": "3.12.1-ddg.2",
   "patches": [
     {
       "name": "AI Writing Tools",

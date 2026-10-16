@@ -39,6 +39,9 @@ public final class DuckEmailSettingsFeature implements Feature {
         List<Row> rows = new ArrayList<>();
         rows.add(new ToggleRow(text(R.string.gboard_duck_email_enable),
                 text(R.string.gboard_duck_email_restart), !busy, store.enabled(), store::enabled));
+        rows.add(new ToggleRow(text(R.string.gboard_duck_email_copy_generated),
+                text(R.string.gboard_duck_email_copy_generated_summary), !busy,
+                store.copyGeneratedEmail(), store::copyGeneratedEmail));
         rows.add(new ActionRow(text(R.string.gboard_duck_email_send_code),
                 text(R.string.gboard_duck_email_address_hint), !busy,
                 () -> showInput(host, text(R.string.gboard_duck_email_send_code),

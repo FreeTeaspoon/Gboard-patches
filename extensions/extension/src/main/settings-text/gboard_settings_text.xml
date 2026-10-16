@@ -3250,6 +3250,14 @@
         <translation locale="en">Force stop and restart Gboard after changing this option. Hold and drag Duck email to pin it to the toolbar.</translation>
         <translation locale="zh-Hant">更改後請強制停止並重新啟動 Gboard。長按並拖曳 Duck 電郵可釘選至工具列。</translation>
     </string>
+    <string name="gboard_duck_email_copy_generated">
+        <translation locale="en">Copy generated email to clipboard</translation>
+        <translation locale="zh-Hant">將產生的電郵地址複製到剪貼簿</translation>
+    </string>
+    <string name="gboard_duck_email_copy_generated_summary">
+        <translation locale="en">Also copy each new Duck address to the clipboard. Takes effect immediately.</translation>
+        <translation locale="zh-Hant">同時將每個新產生的 Duck 地址複製到剪貼簿。立即生效。</translation>
+    </string>
     <string name="gboard_duck_email_account">
         <translation locale="en">Duck account</translation>
         <translation locale="zh-Hant">Duck 帳戶</translation>
@@ -3317,6 +3325,10 @@
     <string name="gboard_duck_email_filled">
         <translation locale="en">Duck address filled</translation>
         <translation locale="zh-Hant">已填入 Duck 地址</translation>
+    </string>
+    <string name="gboard_duck_email_filled_and_copied">
+        <translation locale="en">Duck address filled and copied</translation>
+        <translation locale="zh-Hant">已填入並複製 Duck 地址</translation>
     </string>
     <string name="gboard_duck_email_saved">
         <translation locale="en">Address saved. Copy it from DuckDuckGo Email Protection in Patches settings.</translation>

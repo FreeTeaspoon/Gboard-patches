@@ -1,5 +1,7 @@
 package dev.jason.gboardpatches.extension.duckemail;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.inputmethodservice.InputMethodService;
 import android.os.Handler;
@@ -87,9 +89,12 @@ public final class DuckEmailRuntime {
                             return;
                         }
                         if (result == null || !revision.equals(store.revision()) || !store.enabled()) return;
+                        boolean copied = copyGeneratedAddress(app, result);
                         boolean filled = SESSION.fill(request, result);
-                        message(app, filled ? R.string.gboard_duck_email_filled
-                                : R.string.gboard_duck_email_saved);
+                        message(app, filled ? (copied ? R.string.gboard_duck_email_filled_and_copied
+                                : R.string.gboard_duck_email_filled)
+                                : (copied ? R.string.gboard_duck_email_copied
+                                : R.string.gboard_duck_email_saved));
                     } catch (Throwable ignored) {
                         message(app, R.string.gboard_duck_email_saved);
                     } finally { BUSY.set(false); }
@@ -98,6 +103,19 @@ public final class DuckEmailRuntime {
         } catch (Throwable ignored) {
             BUSY.set(false);
             message(context, R.string.gboard_duck_email_network_error);
+        }
+    }
+
+    static boolean copyGeneratedAddress(Context context, String address) {
+        try {
+            if (!new DuckEmailStore(context).copyGeneratedEmail()) return false;
+            ClipboardManager clipboard = context.getSystemService(ClipboardManager.class);
+            if (clipboard == null) return false;
+            clipboard.setPrimaryClip(ClipData.newPlainText("Duck email", address));
+            return true;
+        } catch (Throwable ignored) {
+            // Clipboard access must not prevent filling the editor.
+            return false;
         }
     }
 

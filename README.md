@@ -25,7 +25,7 @@ This fork adds a **Duck email** button to Gboard’s draggable toolbar menu. Tap
 4. Enter the emailed code or four-word passphrase. You can reopen **Enter emailed code** after checking your inbox.
 5. Open a text field and Gboard’s toolbar menu. Hold and drag **Duck email** to pin it to the top toolbar, or tap it in the menu.
 
-The account token is encrypted with Android Keystore and kept outside patch settings exports. Sign out removes the saved account and last address. Each tap requests a new address directly from DuckDuckGo. Requests run in the background and repeated taps are ignored while one is loading. If the field changes or the keyboard closes, the result stays in **Copy last generated address** in the DDG patch settings. It is never copied to the clipboard automatically.
+The account token is encrypted with Android Keystore and kept outside patch settings exports. Sign out removes the saved account and last address. Each tap requests a new address directly from DuckDuckGo. Requests run in the background and repeated taps are ignored while one is loading. If the field changes or the keyboard closes, the result stays in **Copy last generated address** in the DDG patch settings. Enable **Copy generated email to clipboard** in the DDG patch settings to copy each new address as well as fill it. This option defaults to off and takes effect immediately. If the field changes before the request finishes, the address is still copied when this option is on.
 
 An existing DuckDuckGo Email Protection account and an internet connection are required. Account creation remains at [duckduckgo.com/email](https://duckduckgo.com/email/). This uses DuckDuckGo’s unofficial API.
 
