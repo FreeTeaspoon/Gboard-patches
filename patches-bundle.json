@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-14T19:00:16",
-  "description": "### 🐛 Bug Fixes\n\n* **Gboard:** fix the `Swipe Down to Dismiss Keyboard` patch to prevent accidental dismissal during toolbar icon sorting and candidate drag-to-delete.\n\n### 🐛 修復\n\n* **Gboard:** 修復 `Swipe Down to Dismiss Keyboard` Patch，避免在排序工具列圖示及拖曳候選字刪除時誤觸關閉鍵盤。",
-  "download_url": "https://github.com/jasonwu1994/Gboard-patches/releases/download/v3.13.0-dev.2/patches-3.13.0-dev.2.mpp",
+  "created_at": "2026-11-07T21:37:20Z",
+  "description": "Includes upstream v4.2.0 for Gboard 18.5.4.993608717-release-arm64-v8a, with DuckDuckGo Email Protection. Generate and fill private Duck email addresses from the toolbar, with optional clipboard copying. Also includes upstream settings search, custom spacebar images, editing improvements, and stability fixes.",
+  "download_url": "https://github.com/FreeTeaspoon/Gboard-patches/releases/download/v4.2.0-ddg.1/patches-4.2.0-ddg.1.mpp",
   "signature_download_url": "",
-  "version": "3.13.0-dev.2"
+  "version": "4.2.0-ddg.1"
 }
