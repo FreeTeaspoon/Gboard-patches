@@ -97,6 +97,7 @@ import dev.jason.gboardpatches.patches.gboard.features.zhuyinbottomrow.gboardZhu
 import dev.jason.gboardpatches.patches.gboard.features.zhuyinbottomrow.gboardZhuyinBottomRowWeightSoftKeyPatch
 import dev.jason.gboardpatches.patches.gboard.features.duckemail.gboardDuckEmailLifecyclePatch
 import dev.jason.gboardpatches.patches.gboard.features.duckemail.gboardDuckEmailResourcePatch
+import dev.jason.gboardpatches.patches.gboard.features.wisprflow.gboardWisprFlowResourcePatch
 import dev.jason.gboardpatches.patches.shared.Constants.COMPATIBILITY_GBOARD
 
 @Suppress("unused")
@@ -257,6 +258,22 @@ val gboardDuckEmailPatch = gboardPublicResourcePatch(
         gboardPatchesSettingsPatch,
         gboardDuckEmailResourcePatch,
         gboardDuckEmailLifecyclePatch,
+        gboardAccessPointContributions1803Patch,
+    )
+}
+
+@Suppress("unused")
+val gboardWisprFlowPatch = gboardPublicResourcePatch(
+    featureId = "wispr_flow",
+    name = "Wispr Flow",
+    description = "Add a draggable Wispr Flow dictation button. Requires Android 14+ and " +
+        "the companion LSPosed bridge scoped to Wispr Flow 2.8.5.",
+    default = false,
+) {
+    compatibleWith(COMPATIBILITY_GBOARD)
+    dependsOn(
+        gboardPatchesSettingsPatch,
+        gboardWisprFlowResourcePatch,
         gboardAccessPointContributions1803Patch,
     )
 }
@@ -900,6 +917,7 @@ object GboardPublishedPatchCatalog {
         gboardFloatingWebSearchPatch,
         gboardEditingAccessPointsPatch,
         gboardDuckEmailPatch,
+        gboardWisprFlowPatch,
         gboardSimpleCalculatorPatch,
         gboardSwipeDismissPatch,
         gboardAdvancedVoiceTypingPatch,

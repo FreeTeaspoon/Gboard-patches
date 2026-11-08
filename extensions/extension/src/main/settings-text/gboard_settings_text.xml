@@ -3896,4 +3896,40 @@
         <translation locale="en">Enter a size between 12 and 40 dp.</translation>
         <translation locale="zh-Hant">請輸入 12 至 40 dp 的尺寸。</translation>
     </string>
+    <string name="gboard_wispr_flow_title">
+        <translation locale="en">Wispr Flow</translation>
+        <translation locale="zh-Hant">Wispr Flow</translation>
+    </string>
+    <string name="gboard_wispr_flow_summary">
+        <translation locale="en">Start dictation from the toolbar. Requires the Wispr Flow LSPosed bridge and Android 14 or later.</translation>
+        <translation locale="zh-Hant">從工具列開始語音輸入。需要 Wispr Flow LSPosed 橋接模組與 Android 14 以上版本。</translation>
+    </string>
+    <string name="gboard_wispr_flow_android_required">
+        <translation locale="en">The Wispr Flow keyboard bridge requires Android 14 or later.</translation>
+        <translation locale="zh-Hant">Wispr Flow 鍵盤橋接需要 Android 14 以上版本。</translation>
+    </string>
+    <string name="gboard_wispr_flow_bridge_unavailable">
+        <translation locale="en">Open Wispr Flow once and enable the Wispr Flow bridge in LSPosed. This bridge supports Wispr Flow 2.8.5.</translation>
+        <translation locale="zh-Hant">請先開啟 Wispr Flow，並在 LSPosed 啟用 Wispr Flow 橋接模組。此橋接支援 Wispr Flow 2.8.5。</translation>
+    </string>
+    <string name="gboard_wispr_flow_mode_updated">
+        <translation locale="en">Wispr Flow launcher updated.</translation>
+        <translation locale="zh-Hant">已更新 Wispr Flow 啟動方式。</translation>
+    </string>
+    <string name="gboard_wispr_flow_keyboard_mode">
+        <translation locale="en">Use the keyboard button</translation>
+        <translation locale="zh-Hant">使用鍵盤按鈕</translation>
+    </string>
+    <string name="gboard_wispr_flow_keyboard_mode_summary">
+        <translation locale="en">Hide the idle floating bubble. Recording and transcription controls still appear while dictating.</translation>
+        <translation locale="zh-Hant">隱藏待機懸浮按鈕。語音輸入時仍會顯示錄音與轉錄控制項。</translation>
+    </string>
+    <string name="gboard_wispr_flow_floating_mode">
+        <translation locale="en">Restore the floating bubble</translation>
+        <translation locale="zh-Hant">恢復懸浮按鈕</translation>
+    </string>
+    <string name="gboard_wispr_flow_floating_mode_summary">
+        <translation locale="en">Show the normal Wispr Flow launcher again.</translation>
+        <translation locale="zh-Hant">重新顯示原本的 Wispr Flow 懸浮按鈕。</translation>
+    </string>
 </settings-text>

@@ -33,6 +33,16 @@ An existing DuckDuckGo Email Protection account and an internet connection are r
 
 <img alt="Duck email patch settings" src="docs/assets/features/duck-email/settings.png" width="360">
 
+### Wispr Flow integration
+
+The optional **Wispr Flow** patch adds a draggable dictation button to the toolbar menu.
+Its companion LSPosed module starts dictation inside the original Wispr app and hides
+the idle floating bubble. Wispr's recording and transcription controls remain visible.
+This experimental integration targets Gboard 18.5.4, Wispr Flow 2.8.5 and Android 14 or
+later. It has build and unit-test coverage, and live dictation and text insertion have
+been confirmed on a REDMI K90.
+See the [bridge setup and build instructions](integrations/wispr-flow-bridge/README.md).
+
 Based on [jasonwu1994/Gboard-patches](https://github.com/jasonwu1994/Gboard-patches). All upstream patches remain available. The original project’s documentation follows below.
 
 ## Overview

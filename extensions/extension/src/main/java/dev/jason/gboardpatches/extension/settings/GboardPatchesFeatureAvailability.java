@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 public final class GboardPatchesFeatureAvailability {
+    public static final String FEATURE_WISPR_FLOW = "dev.jason.gboardpatches.feature.wispr_flow";
     public static final String FEATURE_DUCK_EMAIL = "dev.jason.gboardpatches.feature.duck_email";
     public static final String FEATURE_KEYPRESS_HAPTICS =
             "dev.jason.gboardpatches.feature.keypress_haptics";

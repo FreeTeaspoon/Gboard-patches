@@ -683,6 +683,7 @@ class GboardPortProductCatalogContractTest {
             "custom_symbols" to "version-sensitive",
             "developer_options" to "version-sensitive",
             "duck_email" to "version-sensitive",
+            "wispr_flow" to "version-sensitive",
             "editing_access_points" to "version-sensitive",
             "emojis_stickers_gifs_tab_order" to "version-sensitive",
             "enable_accessibility_layout" to "version-sensitive",

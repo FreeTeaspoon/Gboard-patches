@@ -534,6 +534,18 @@
       "options": []
     },
     {
+      "name": "Wispr Flow",
+      "description": "Add a draggable Wispr Flow dictation button. Requires Android 14+ and the companion LSPosed bridge scoped to Wispr Flow 2.8.5.",
+      "use": false,
+      "dependencies": [],
+      "compatiblePackages": {
+        "com.google.android.inputmethod.latin": [
+          "18.5.4.993608717-release-arm64-v8a"
+        ]
+      },
+      "options": []
+    },
+    {
       "name": "Zhuyin Bottom Row Key Sizes",
       "description": "調整注音鍵盤底排按鍵大小\nAdjust Zhuyin keyboard bottom-row key sizes.",
       "use": true,
