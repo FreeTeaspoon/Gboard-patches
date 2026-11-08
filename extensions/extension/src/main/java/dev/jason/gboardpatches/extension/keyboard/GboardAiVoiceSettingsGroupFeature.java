@@ -1,6 +1,7 @@
 package dev.jason.gboardpatches.extension.keyboard;
 
 import android.content.Context;
+import dev.jason.gboardpatches.extension.wisprflow.WisprFlowSettingsFeature;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,7 +33,8 @@ public final class GboardAiVoiceSettingsGroupFeature
                 Arrays.asList(
                         new GboardAiWritingToolsSettingsFeature(context),
                         new GboardAdvancedVoiceSettingsFeature(context),
-                        new GboardBluetoothMicrophoneSettingsFeature(context)));
+                        new GboardBluetoothMicrophoneSettingsFeature(context),
+                        new WisprFlowSettingsFeature(context)));
     }
 
     @Override

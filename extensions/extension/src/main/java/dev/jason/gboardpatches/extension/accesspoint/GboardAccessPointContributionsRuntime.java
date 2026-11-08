@@ -1,6 +1,7 @@
 package dev.jason.gboardpatches.extension.accesspoint;
 
 import android.content.Context;
+import dev.jason.gboardpatches.extension.wisprflow.WisprFlowAccessPointContribution;
 import dev.jason.gboardpatches.extension.duckemail.DuckEmailAccessPointContribution;
 import android.util.Log;
 import dev.jason.gboardpatches.extension.editingaccesspoints.GboardEditingAccessPointsContribution;
@@ -52,6 +53,13 @@ public final class GboardAccessPointContributionsRuntime {
         } catch (Throwable failure) {
             logFailure("Duck email catalog contribution failed", failure);
         }
+        try {
+            if (hasFeature(context, GboardPatchesFeatureAvailability.FEATURE_WISPR_FLOW)) {
+                result = WisprFlowAccessPointContribution.INSTANCE.extendOrderCatalog(context, result);
+            }
+        } catch (Throwable failure) {
+            logFailure("Wispr Flow catalog contribution failed", failure);
+        }
         return result;
     }
 
@@ -87,6 +95,13 @@ public final class GboardAccessPointContributionsRuntime {
             logFailure("Editing buttons controller contribution failed", failure);
         }
         registerDuckEmail(controller, context);
+        try {
+            if (hasFeature(context, GboardPatchesFeatureAvailability.FEATURE_WISPR_FLOW)) {
+                WisprFlowAccessPointContribution.INSTANCE.register(controller, context);
+            }
+        } catch (Throwable failure) {
+            logFailure("Wispr Flow controller contribution failed", failure);
+        }
     }
 
     private static void registerDuckEmail(Object controller, Context context) {
